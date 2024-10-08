@@ -6,8 +6,11 @@
 
 ### 1、下载后 编辑修改以下参数：
 DOMAIN_NAME=xxxx.goip.it # 替换成自己的域名
+
 USERNAME=xxxxxx # 替换成自己域名的账号
+
 PASSWORD=xxxxxx # 替换成自己域名的密码
+
 
 自己域名、域名账号、密码从网站 goip.de 中获取
 
