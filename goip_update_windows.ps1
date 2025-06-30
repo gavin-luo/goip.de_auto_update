@@ -2,18 +2,19 @@
 
 
 # 要更新的目标域名
-$DOMAIN_NAME = "xxxxxx.goip.it"
+$DOMAIN_NAME = "xxxxx.goip.it"
 # 网站 goip.de 的域名账号（登录后，为此域名产生的专用账号）：
-$USERNAME = "xxxxx"
+$USERNAME = "xxxxxx"
 # 域名密码：
-$PASSWORD = "xxxxxxxxx"
+$PASSWORD = "xxxxx"
 # IPv6 的域名查询 DNS：
-$DNS_Server = "2610:a1:1019::1"
+$DNS_Server = "2400:3200::1"
+# $DNS_Server = "223.6.6.6"
 
 # 从网址中取得本机当前公网 IPv6 地址
-$GETIP_URL = "http://speed.neu6.edu.cn/getIP.php"
+$GETIP_URL = "https://ipv6.luog.pub"
 
-$IPV6_ADDR = curl $GETIP_URL
+$IPV6_ADDR = curl -k $GETIP_URL
 
 # 如果没有获得本机 ipv6 地址，就退出程序。
 if ($IPV6_ADDR -notmatch ":" ) { 
@@ -21,7 +22,7 @@ if ($IPV6_ADDR -notmatch ":" ) {
     exit 0 
 }
 
-$DOMAIN_ADDR_STR=nslookup $DOMAIN_NAME
+$DOMAIN_ADDR_STR=nslookup -query=AAAA $DOMAIN_NAME $DNS_Server
 
 $OLD_ADDR=$DOMAIN_ADDR_STR.split("\n")[4].split()[2]
 

@@ -4,20 +4,20 @@
 
 # 获取 IP 的网址
 
-DOMAIN_NAME=xxxx.goip.it
-USERNAME=xxxxxx
-PASSWORD=xxxxxx
-DNS_Server=2610:a1:1019::1
+DOMAIN_NAME=xxx.goip.it
+USERNAME=xxxxxxx
+PASSWORD=xxxxxxx
+DNS_Server=2400:3200::1
 
 # 从网址中取得本机当前公网 IPv6 地址
-GETIP_URL=http://speed.neu6.edu.cn/getIP.php
-# IPV6_ADDR=`curl $GETIP_URL | awk '$0 ~ ":"  {print $0}'` 
-IPV6_ADDR=`curl $GETIP_URL | awk '{print $0}'`
+GETIP_URL=https://ipv6.luog.pub
+# IPV6_ADDR=`curl -k $GETIP_URL | awk '$0 ~ ":"  {print $0}'` 
+IPV6_ADDR=`curl -k $GETIP_URL | awk '{print $0}'`
 
 # IPV6_ADDR=`ip addr list  | grep inet6 | grep global | awk '{print $2}' | awk -F '/' '{print $1}'`
 
 # GETIP_URL=http://myip6.ipip.net
-# IPV6_ADDR=`curl $GETIP_URL | awk '{print $2}'| awk -F '：' '{print $2}' `
+# IPV6_ADDR=`curl -k $GETIP_URL | awk '{print $2}'| awk -F '：' '{print $2}' `
 
 # 如果没有获得合法的 IPv6 地址，就退出
 if [ -z $IPV6_ADDR ] ; then
@@ -25,9 +25,9 @@ if [ -z $IPV6_ADDR ] ; then
 	exit 0
 fi
 
-# 查询域名解析的 IP地址
-# OLD_IP=`nslookup $DOMAIN_NAME | grep 'Address: 2' | awk -F 'Address: ' '{print $2}'`
-OLD_IP=`nslookup $DOMAIN_NAME $DNS_Server | grep 'Address: [0-9]' | awk '{print $2}'`
+# 查询域名解析的 IP地址(IPv6 )
+# OLD_IP=`nslookup -query=AAAA $DOMAIN_NAME | grep 'Address: 2' | awk -F 'Address: ' '{print $2}'`
+OLD_IP=`nslookup -query=AAAA $DOMAIN_NAME $DNS_Server | grep 'Address: [0-9]' | awk '{print $2}'`
 
 # 如果为空，就设置该值为“no”
 if [ -z $OLD_IP ] ; then OLD_IP=no ; fi
