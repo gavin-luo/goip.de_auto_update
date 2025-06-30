@@ -1,9 +1,10 @@
 #!/bin/sh
 
 # -- 更新动态域名 goip.it ，IPv6 版本 --
+# --版本： v1.1
+# --最后更新日期： 2025-06-30
 
 # 获取 IP 的网址
-
 DOMAIN_NAME=xxx.goip.it
 USERNAME=xxxxxxx
 PASSWORD=xxxxxxx
