@@ -1,5 +1,6 @@
-# -- 本脚本用途：更新域名goip.it ( 网站 www.goip.de )
-
+# -- 本脚本用途：更新域名goip.it ( 网站 www.goip.de )，ipv6 版本
+# --版本： v1.1
+# --最后更新日期： 2025-06-30
 
 # 要更新的目标域名
 $DOMAIN_NAME = "xxxxx.goip.it"
